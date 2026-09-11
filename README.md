@@ -2,9 +2,17 @@
 
 Static images for Glance private apps.
 
-| Image | Private-app URL | Width |
-|---|---|---|
-| `arcade-basketball.png` | `http://glance-private.pairic-labs.workers.dev/` | 64 |
+| App | Private-app URL | Width | Refresh |
+|---|---|---|---|
+| Arcade basketball (`arcade-basketball.png`) | `http://glance-private.pairic-labs.workers.dev/` | 64 | 1 hour |
+| Deep Freeze 250 Club (`deep-freeze/`) | `http://glance-private.pairic-labs.workers.dev/deep-freeze` | 64 | 1 minute |
+
+**Deep Freeze has two frames** — the snowflake-with-medal and the member list —
+and the Worker alternates them by clock time, one per panel refresh. The
+rotation window must *equal* the panel's refresh: at the default it is one
+minute. For any other refresh, add it in seconds, e.g. a 5-minute refresh is
+`/deep-freeze?every=300`. (A refresh twice the window lands every fetch on the
+same frame forever.) `?frame=1` / `?frame=2` pin a frame for checking.
 
 ## Why there is a Worker
 
@@ -24,7 +32,10 @@ Rendered from `arcade-basketball-high-score` in the Glance Developer Network
 catalog (submitted as glance-led-dev/glance-dev-network#617) — same `app.star`,
 so it is pixel-identical to the catalog version.
 
-When a record falls:
+Adding a Deep Freeze member: append them to `members` in
+`deep-freeze/manifest.yaml`, then `deep-freeze/update.sh`.
+
+When an arcade record falls:
 
 ```bash
 ./update.sh "NAME" SCORE
