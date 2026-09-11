@@ -1,0 +1,20 @@
+gdn: 1
+id: deep-freeze
+version: 0.1.0
+name: Deep Freeze 250 Club
+author: pairic
+description: Private honor roll for everyone who has broken 250 on Deep Freeze.
+category: Fun
+entry: app.star
+width: 64
+height: 32
+refresh: 60
+pages: [club, members]
+
+inputs:
+  - key: members
+    type: string
+    app_input_type: free-text
+    label: Members
+    default: "ARIC, JORI, ANDREA, TRENT, ANDY, TALYNN, DANA"
+    help: Comma-separated, in the order they joined.
